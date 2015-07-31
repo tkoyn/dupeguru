@@ -524,6 +524,9 @@ msgstr "Вважати схожі слова однаковими"
 msgid "Can mix file kind"
 msgstr "Можна змішувати типи файлів"
 
+msgid "Require reference"
+msgstr ""
+
 #: qt/me/preferences_dialog.py:81 qt/pe/preferences_dialog.py:43
 #: qt/se/preferences_dialog.py:55 cocoa/base/en.lproj/Localizable.strings:0
 msgid "Use regular expressions when filtering"

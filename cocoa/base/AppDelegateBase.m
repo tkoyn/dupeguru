@@ -27,6 +27,7 @@ http://www.gnu.org/licenses/gpl-3.0.html
     [d setObject:i2n(1) forKey:@"recreatePathType"];
     [d setObject:i2n(11) forKey:TableFontSize];
     [d setObject:b2n(YES) forKey:@"mixFileKind"];
+    [d setObject:b2n(NO) forKey:@"requireReference"];
     [d setObject:b2n(NO) forKey:@"useRegexpFilter"];
     [d setObject:b2n(NO) forKey:@"ignoreHardlinkMatches"];
     [d setObject:b2n(NO) forKey:@"removeEmptyFolders"];

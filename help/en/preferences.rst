@@ -35,6 +35,10 @@ Preferences
     If you check this box, duplicate groups are allowed to have files with different extensions. If
     you don't check it, well, they aren't!
 
+**Require reference:**
+    If you check this box, each group of matches must include a reference file.  No matches of purely
+    nonreference files will be included.
+    
 **Ignore duplicates hardlinking to the same file:**
     If this option is enabled, dupeGuru will verify duplicates to see if they refer to the same
     `inode`_. If they do, they will not be considered duplicates. (Only for OS X and Linux)

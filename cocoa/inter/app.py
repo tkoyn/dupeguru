@@ -130,6 +130,9 @@ class PyDupeGuruBase(PyBaseApp):
     def setMixFileKind_(self, mix_file_kind: bool):
         self.model.scanner.mix_file_kind = mix_file_kind
     
+    def setRequireReference_(self, require_reference: bool):
+        self.model.scanner.require_reference = require_reference
+    
     def setEscapeFilterRegexp_(self, escape_filter_regexp: bool):
         self.model.options['escape_filter_regexp'] = escape_filter_regexp
     

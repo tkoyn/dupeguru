@@ -80,6 +80,8 @@ class PreferencesDialog(PreferencesDialogBase):
         self.widgetsVLayout.addWidget(self.matchSimilarBox)
         self._setupAddCheckbox('mixFileKindBox', tr("Can mix file kind"))
         self.widgetsVLayout.addWidget(self.mixFileKindBox)
+        self._setupAddCheckbox('requireReferenceBox', tr("Require reference"))
+        self.widgetsVLayout.addWidget(self.requireReferenceBox)
         self._setupAddCheckbox('useRegexpBox', tr("Use regular expressions when filtering"))
         self.widgetsVLayout.addWidget(self.useRegexpBox)
         self._setupAddCheckbox('removeEmptyFoldersBox', tr("Remove empty folders on delete or move"))

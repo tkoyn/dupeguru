@@ -43,6 +43,7 @@ http://www.gnu.org/licenses/gpl-3.0.html
     [model setMinMatchPercentage:n2i([ud objectForKey:@"minMatchPercentage"])];
     [model setWordWeighting:n2b([ud objectForKey:@"wordWeighting"])];
     [model setMixFileKind:n2b([ud objectForKey:@"mixFileKind"])];
+    [model setRequireReference:n2b([ud objectForKey:@"requireReference"])];
     [model setIgnoreHardlinkMatches:n2b([ud objectForKey:@"ignoreHardlinkMatches"])];
     [model setMatchSimilarWords:n2b([ud objectForKey:@"matchSimilarWords"])];
     int smallFileThreshold = [ud integerForKey:@"smallFileThreshold"]; // In KB

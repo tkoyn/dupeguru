@@ -5,9 +5,9 @@ dialogTitles = {
     'pe': "dupeGuru PE Preferences",
 }
 dialogHeights = {
-    'se': 345,
-    'me': 365,
-    'pe': 275,
+    'se': 365,
+    'me': 385,
+    'pe': 295,
 }
 scanTypeNames = {
     'se': ["Filename", "Content", "Folders"],
@@ -34,6 +34,7 @@ if edition in ('se', 'me'):
 elif edition == 'pe':
     matchDifferentDimensionsBox = Checkbox(basicTab.view, "Match pictures of different dimensions")
 mixKindBox = Checkbox(basicTab.view, "Can mix file kind")
+requireReferenceBox = Checkbox(basicTab.view, "Require reference")
 removeEmptyFoldersBox = Checkbox(basicTab.view, "Remove empty folders on delete or move")
 checkForUpdatesBox = Checkbox(basicTab.view, "Automatically check for updates")
 if edition == 'se':
@@ -65,6 +66,7 @@ thresholdSlider.bind('value', defaults, 'values.minMatchPercentage')
 thresholdValueLabel.bind('value', defaults, 'values.minMatchPercentage')
 fontSizeCombo.bind('value', defaults, 'values.TableFontSize')
 mixKindBox.bind('value', defaults, 'values.mixFileKind')
+requireReferenceBox.bind('value', defaults, 'values.requireReference')
 removeEmptyFoldersBox.bind('value', defaults, 'values.removeEmptyFolders')
 checkForUpdatesBox.bind('value', defaults, 'values.SUEnableAutomaticChecks')
 regexpCheckbox.bind('value', defaults, 'values.useRegexpFilter')
@@ -100,7 +102,7 @@ thresholdValueLabel.formatter = NumberFormatter(NumberStyle.Decimal)
 thresholdValueLabel.formatter.maximumFractionDigits = 0
 allLabels = [scanTypeLabel, thresholdValueLabel, moreResultsLabel, fewerResultsLabel,
     thresholdLabel, fontSizeLabel, customCommandLabel, copyMoveLabel]
-allCheckboxes = [mixKindBox, removeEmptyFoldersBox, checkForUpdatesBox, regexpCheckbox,
+allCheckboxes = [mixKindBox, requireReferenceBox, removeEmptyFoldersBox, checkForUpdatesBox, regexpCheckbox,
     ignoreHardlinksBox, debugModeCheckbox]
 if edition == 'se':
     allLabels += [smallFilesThresholdSuffixLabel]
@@ -164,13 +166,13 @@ else:
     viewToPackCheckboxesUnder = fontSizeCombo
 
 if edition == 'se':
-    checkboxesToLayout = [wordWeightingBox, matchSimilarWordsBox, mixKindBox, removeEmptyFoldersBox,
+    checkboxesToLayout = [wordWeightingBox, matchSimilarWordsBox, mixKindBox, requireReferenceBox, removeEmptyFoldersBox,
         ignoreSmallFilesBox]
 elif edition == 'me':
-    checkboxesToLayout = [wordWeightingBox, matchSimilarWordsBox, mixKindBox, removeEmptyFoldersBox,
+    checkboxesToLayout = [wordWeightingBox, matchSimilarWordsBox, mixKindBox, requireReferenceBox, removeEmptyFoldersBox,
         checkForUpdatesBox]
 elif edition == 'pe':
-    checkboxesToLayout = [matchDifferentDimensionsBox, mixKindBox, removeEmptyFoldersBox,
+    checkboxesToLayout = [matchDifferentDimensionsBox, mixKindBox, requireReferenceBox, removeEmptyFoldersBox,
         checkForUpdatesBox]
 checkboxLayout = VLayout(checkboxesToLayout)
 checkboxLayout.packRelativeTo(viewToPackCheckboxesUnder, Pack.Below)

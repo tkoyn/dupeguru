@@ -156,6 +156,7 @@ class PreferencesDialogBase(QDialog):
         self.filterHardnessLabel.setNum(prefs.filter_hardness)
         setchecked = lambda cb, b: cb.setCheckState(Qt.Checked if b else Qt.Unchecked)
         setchecked(self.mixFileKindBox, prefs.mix_file_kind)
+        setchecked(self.requireReferenceBox, prefs.require_reference)
         setchecked(self.useRegexpBox, prefs.use_regexp)
         setchecked(self.removeEmptyFoldersBox, prefs.remove_empty_folders)
         setchecked(self.ignoreHardlinkMatches, prefs.ignore_hardlink_matches)
@@ -175,6 +176,7 @@ class PreferencesDialogBase(QDialog):
         prefs.filter_hardness = self.filterHardnessSlider.value()
         ischecked = lambda cb: cb.checkState() == Qt.Checked
         prefs.mix_file_kind = ischecked(self.mixFileKindBox)
+        prefs.require_reference = ischecked(self.requireReferenceBox)
         prefs.use_regexp = ischecked(self.useRegexpBox)
         prefs.remove_empty_folders = ischecked(self.removeEmptyFoldersBox)
         prefs.ignore_hardlink_matches = ischecked(self.ignoreHardlinkMatches)

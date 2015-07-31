@@ -129,6 +129,10 @@ class Scanner:
         j = j.start_subjob([8, 2])
         for f in (f for f in files if not hasattr(f, 'is_ref')):
             f.is_ref = False
+
+        # Determine if there are any reference files.
+        any_reference_files = any(f.is_ref for f in files)    
+            
         files = remove_dupe_paths(files)
         logging.info("Getting matches. Scan type: %d", self.scan_type)
         matches = self._getmatches(files, j)
@@ -155,6 +159,16 @@ class Scanner:
             matches = [m for m in matches if get_file_ext(m.first.name) == get_file_ext(m.second.name)]
         matches = [m for m in matches if m.first.path.exists() and m.second.path.exists()]
         matches = [m for m in matches if not (m.first.is_ref and m.second.is_ref)]
+
+        # If there are any reference files we need to exclude matches where both files are not reference.
+        # But to ensure that grouping works correctly, keep match pairs that are both non-reference, if
+        # there exists another match with one of the two files being matched to a reference file.
+        if self.require_reference and any_reference_files:
+            matches = [m for m in matches if (not (not m.first.is_ref and not m.second.is_ref)) or
+            ( [a for a in matches if m.first.path == a.first.path and a.second.is_ref] or
+              [b for b in matches if m.second.path == b.second.path and b.first.is_ref])
+            ]
+
         if self.ignore_list:
             j = j.start_subjob(2)
             iter_matches = j.iter_with_progress(matches, tr("Processed %d/%d matches against the ignore list"))
@@ -189,6 +203,7 @@ class Scanner:
     match_similar_words = False
     min_match_percentage = 80
     mix_file_kind = True
+    require_reference = False
     scan_type = ScanType.Filename
     scanned_tags = {'artist', 'title'}
     size_threshold = 0

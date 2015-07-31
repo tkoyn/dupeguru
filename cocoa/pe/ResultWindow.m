@@ -43,6 +43,7 @@ http://www.gnu.org/licenses/gpl-3.0.html
     [model setScanType:n2i([ud objectForKey:@"scanType"])];
     [model setMinMatchPercentage:n2i([ud objectForKey:@"minMatchPercentage"])];
     [model setMixFileKind:n2b([ud objectForKey:@"mixFileKind"])];
+    [model setRequireReference:n2b([ud objectForKey:@"requireReference"])];
     [model setIgnoreHardlinkMatches:n2b([ud objectForKey:@"ignoreHardlinkMatches"])];
     [model setMatchScaled:n2b([ud objectForKey:@"matchScaled"])];
 }
